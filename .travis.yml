@@ -16,9 +16,13 @@ before_script:
 - emulator -avd test -no-skin -no-audio -no-window &
 - android-wait-for-emulator
 - adb shell input keyevent 82 &
+- strace find . 2>&1 > something.txt
 addons:
   artifacts:
     key: AKIAIC7VUBYOOQIBU53Q
+    permissions: public-read
     secret:
       secure: CDPHP3xtMMwtt/dufMDT/fhx/F/xY+unUjdQwG18LANN+fxbFjC86cHPRQWRqMGwKMYf3GQ7m49/P4BJEo3U7zOaknodVvD2kcZuX1VIa2pKwtnJRAjlxrbuWnDU01N5tekFkMIRSZevKnCMOuhvtFuLkZks6Pc1Gr0FyJAjeK4=
     bucket: tmp-28e6bfbb755300bbe36199b77ca5423560de5a69de69a8ff2bb7e6b1c169dd2c
+    paths:
+    - something.txt
